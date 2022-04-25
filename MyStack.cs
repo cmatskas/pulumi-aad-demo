@@ -2,11 +2,9 @@ using System.Threading.Tasks;
 using Pulumi;
 using Pulumi.AzureNative.Resources;
 using AzureNative = Pulumi.AzureNative;
-using Pulumi.AzureNative.Storage.Inputs;
 using Azure.Security.KeyVault.Secrets;
 using Azure.Identity;
 using Azure.Core;
-using System.Threading;
 using System;
 
 class MyStack : Stack
@@ -25,8 +23,6 @@ class MyStack : Stack
             ResourceGroupName = resourceGroup.Name,
             ServerName = $"sqlpulumidemo{Guid.NewGuid().ToString().Substring(0,4)}"
         }); 
-
-        Console.WriteLine();
     }
 
     private static async Task<string> GetkeyVaultSecret(string secretName)
